@@ -2,36 +2,29 @@
 #include <QTRSensors.h>
 #include "Sensor.h"
 
-Sensor::Sensor(int8_t pins[8], int8_t pinLed){
+Sensor::Sensor(uint8_t pins[8], uint8_t pinLed){
     for(int i = 0; i < 8; i++){
-        this->mPins[i] = pins[i];
+        this->m_Pins[i] = pins[i];
     }
 
-    this->mPinLed = pinLed;
+    this->m_PinLed = pinLed;
 }
 
 void Sensor::setup(){
-    this->mQtr.setTypeAnalog();
-    this->mQtr.setSensorPins((const uint8_t[]){A0, A1, A2, A3, A4, A5, A6, A7}, this->mSensorCount);
-    this->mQtr.setEmitterPin(this->mPinLed);
+    this->m_Qtr.setTypeAnalog();
+    this->m_Qtr.setSensorPins(this->m_Pins, this->mSensorCount);
+    this->m_Qtr.setEmitterPin(this->m_PinLed);
     
     for (uint16_t i = 0; i < 400; i++)
     {
-        this->mQtr.calibrate();
+        this->m_Qtr.calibrate();
     }
 }
 
 void Sensor::update(){
-    this->mValue  = this->mQtr.readLineBlack(this->mSensorValues);
-    
-    for (uint8_t i = 0; i < this->mSensorCount; i++)
-    {
-        Serial.print(this->mSensorValues[i]);
-        Serial.print('\t');
-    }
-    Serial.println(this->mValue );
+    this->m_Value  = this->m_Qtr.readLineBlack(this->m_SensorValues);
 }
 
 int Sensor::getValue(){
-    return this->mValue;
+    return this->m_Value;
 }

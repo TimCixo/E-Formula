@@ -6,15 +6,15 @@ class Sensor{
     private:
     static const int mSensorCount = 8;
 
-    int8_t mPins[8];
-    int8_t mPinLed;
+    uint8_t m_Pins[8];
+    uint8_t m_PinLed;
 
-    int mValue = 0;
-    uint16_t mSensorValues[mSensorCount];
-    QTRSensors mQtr;
+    int16_t m_Value = 0;
+    uint16_t m_SensorValues[mSensorCount];
+    QTRSensors m_Qtr;
 
     public:
-    Sensor(int8_t pins[8], int8_t pinLed);
+    Sensor(uint8_t pins[8], uint8_t pinLed);
     void setup();
     void update();
 
