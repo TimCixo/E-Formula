@@ -6,13 +6,15 @@
 
 class Movement{
     private:
-    double mSetpoint = 3500;
-    double mInput, mOutput;
     
-    Sensor mSensor;
-    Motor mLeftMotor;
-    Motor mRightMotor;
-    PID mPid;
+    Sensor m_Sensor;
+    Motor m_LeftMotor;
+    Motor m_RightMotor;
+    PID m_Pid;
+
+    double m_Setpoint = 3500;
+    double m_Input = 0; 
+    double m_Output = 0;
 
     public:
     Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, double kp, double ki, double kd);

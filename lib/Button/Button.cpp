@@ -1,25 +1,25 @@
 #include <Arduino.h>
 #include "Button.h"
 
-Button::Button(int8_t pin){
-    this->mPin = pin;
+Button::Button(uint8_t pin){
+    this->m_Pin = pin;
 }
 
 void Button::setup(){
-    pinMode(this->mPin, INPUT_PULLUP);
+    pinMode(this->m_Pin, INPUT_PULLUP);
 
 }
 
 void Button::update(){
-    this->mCurrenValue = digitalRead(this->mPin);
+    this->m_CurrenValue = digitalRead(this->m_Pin);
 
-    if(this->mPreviousValue < this->mCurrenValue){
-        this->mTurnOn = !this->mTurnOn;
+    if(this->m_PreviousValue < this->m_CurrenValue){
+        this->m_TurnOn = !this->m_TurnOn;
     }
 
-    this->mPreviousValue = this->mCurrenValue;
+    this->m_PreviousValue = this->m_CurrenValue;
 }
 
 bool Button::getTurnOn(){
-    return this->mTurnOn;
+    return this->m_TurnOn;
 }

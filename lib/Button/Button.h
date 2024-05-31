@@ -4,14 +4,14 @@
 class Button
 {
 private:
-    int8_t mPin;
+    uint8_t m_Pin;
 
-    bool mPreviousValue = true;
-    bool mCurrenValue = false;
-    bool mTurnOn = false;
+    bool m_PreviousValue = true;
+    bool m_CurrenValue = false;
+    bool m_TurnOn = false;
 
 public:
-    explicit Button(int8_t pin);
+    explicit Button(uint8_t pin);
     void setup();
     void update();
 
