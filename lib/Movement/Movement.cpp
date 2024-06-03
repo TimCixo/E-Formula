@@ -2,7 +2,7 @@
 #include <PID_v1.h>
 #include "Movement.h"
 
-Movement::Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, double kp, double ki, double kd) : m_Sensor(sensor), m_LeftMotor(leftMotor), m_RightMotor(rightMotor), m_Pid(&m_Input, &m_Output, &m_Setpoint, kd, ki, kd, DIRECT){}
+Movement::Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, double kp, double ki, double kd) : m_Sensor(sensor), m_LeftMotor(leftMotor), m_RightMotor(rightMotor), m_Pid(&m_Input, &m_Output, &m_Setpoint, kp, ki, kd, DIRECT){}
 
 void Movement::setup(){
     this->m_Sensor.setup();
@@ -18,12 +18,12 @@ void Movement::update(){
 }
 
 void Movement::start(){
-    int baseSpeed = 100;
+    int baseSpeed = 120;
     int leftSpeed, rightSpeed;
     int speedAdjustment = static_cast<int>(this->m_Output);
 
-    rightSpeed = constrain(baseSpeed - speedAdjustment, 0, 255);
     leftSpeed = constrain(baseSpeed + speedAdjustment, 0, 255);
+    rightSpeed = constrain(baseSpeed - speedAdjustment, 0, 255);
 
     this->m_LeftMotor.setSpeed(leftSpeed);
     this->m_RightMotor.setSpeed(rightSpeed);
