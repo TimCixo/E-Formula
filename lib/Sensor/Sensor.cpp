@@ -21,7 +21,7 @@ void Sensor::setup(){
 }
 
 void Sensor::update(){
-    this->m_Value  = this->m_Qtr.readLineBlack(this->m_SensorValues);
+    this->m_Value = this->m_Qtr.readLineBlack(this->m_SensorValues);
 }
 
 int Sensor::getValue(){
