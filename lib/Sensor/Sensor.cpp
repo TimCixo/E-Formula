@@ -15,8 +15,7 @@ void Sensor::setup(){
     this->m_Qtr.setSensorPins(this->m_Pins, this->mSensorCount);
     this->m_Qtr.setEmitterPin(this->m_PinLed);
     
-    for (uint16_t i = 0; i < 400; i++)
-    {
+    for (uint16_t i = 0; i < 400; i++){
         this->m_Qtr.calibrate();
     }
 }

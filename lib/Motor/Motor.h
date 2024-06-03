@@ -11,5 +11,5 @@ class Motor{
     Motor(uint8_t pinPwm, uint8_t pinIn1, uint8_t pinIn2);
     void setup();
 
-    void activate(int speed, bool direction);
+    void setSpeed(int speed);
 };

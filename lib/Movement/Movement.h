@@ -21,6 +21,6 @@ class Movement{
     void setup();
     void update();
 
-    void startMoving();
+    void start();
     void stop();
 };
