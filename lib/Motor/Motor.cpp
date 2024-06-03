@@ -13,15 +13,9 @@ void Motor::setup(){
     pinMode(this->m_PinIn2, OUTPUT);
 }
 
-void Motor::activate(int speed, bool direction){
-    if(direction){
-        digitalWrite(m_PinIn1, HIGH);
-        digitalWrite(m_PinIn2, LOW);
-    }
-    else{
-        digitalWrite(m_PinIn1, LOW);
-        digitalWrite(m_PinIn2, HIGH);
-    }
+void Motor::setSpeed(int speed){
+    digitalWrite(m_PinIn1, HIGH);
+    digitalWrite(m_PinIn2, LOW);
 
     analogWrite(m_PinPwm, speed);
 }

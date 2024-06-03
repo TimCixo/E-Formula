@@ -15,24 +15,21 @@ void Movement::update(){
     this->m_Sensor.update();
     this->m_Input = this->m_Sensor.getValue(); 
     this->m_Pid.Compute(); 
-
 }
 
-void Movement::startMoving(){
-    int threshold = 10;
+void Movement::start(){
     int baseSpeed = 100;
     int leftSpeed, rightSpeed;
+    int speedAdjustment = static_cast<int>(this->m_Output);
 
-    if (abs(this->m_Output) < threshold) {
-        leftSpeed = constrain(baseSpeed, 0, 255);
-        rightSpeed = constrain(baseSpeed, 0, 255);
-    } else {
-        leftSpeed = constrain(255 + this->m_Output, 0, 255); 
-        rightSpeed = constrain(255 - this->m_Output, 0, 255);
-    }
+    rightSpeed = constrain(baseSpeed - speedAdjustment, 0, 255);
+    leftSpeed = constrain(baseSpeed + speedAdjustment, 0, 255);
+
+    this->m_LeftMotor.setSpeed(leftSpeed);
+    this->m_RightMotor.setSpeed(rightSpeed);
 }
 
 void Movement::stop(){
-    this->m_LeftMotor.activate(0, true);
-    this->m_RightMotor.activate(0, true);
+    this->m_LeftMotor.setSpeed(0);
+    this->m_RightMotor.setSpeed(0);
 }

@@ -14,12 +14,12 @@ void Button::update(){
     this->m_CurrenValue = digitalRead(this->m_Pin);
 
     if(this->m_PreviousValue < this->m_CurrenValue){
-        this->m_TurnOn = !this->m_TurnOn;
+        this->m_Toggled = !this->m_Toggled;
     }
 
     this->m_PreviousValue = this->m_CurrenValue;
 }
 
-bool Button::getTurnOn(){
-    return this->m_TurnOn;
+bool Button::getToggled(){
+    return this->m_Toggled;
 }

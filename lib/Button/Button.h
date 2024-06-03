@@ -8,12 +8,12 @@ private:
 
     bool m_PreviousValue = true;
     bool m_CurrenValue = false;
-    bool m_TurnOn = false;
+    bool m_Toggled = false;
 
 public:
     explicit Button(uint8_t pin);
     void setup();
     void update();
 
-    bool getTurnOn();
+    bool getToggled();
 };

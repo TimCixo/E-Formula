@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <PID_v1.h>
 #include "Button.h"
 #include "Motor.h"
 #include "Sensor.h"
@@ -25,8 +24,8 @@ void loop(){
     BUTTON.update();
     MOVEMENT.update();
 
-    if(BUTTON.getTurnOn()){
-        MOVEMENT.startMoving();
+    if(BUTTON.getToggled()){
+        MOVEMENT.start();
     }
     else{
         MOVEMENT.stop();
