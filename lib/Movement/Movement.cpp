@@ -2,19 +2,22 @@
 #include <PID_v1.h>
 #include "Movement.h"
 
-Movement::Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, double kp, double ki, double kd) : m_Sensor(sensor), m_LeftMotor(leftMotor), m_RightMotor(rightMotor), m_Pid(&m_Input, &m_Output, &m_Setpoint, kp, ki, kd, DIRECT){}
+Movement::Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, uint8_t stby, double kp, double ki, double kd) : m_Sensor(sensor), m_LeftMotor(leftMotor), m_RightMotor(rightMotor), m_Stby(stby), m_Pid(&m_Input, &m_Output, &m_Setpoint, kp, ki, kd, DIRECT){}
 
 void Movement::setup(){
     this->m_Sensor.setup();
     this->m_LeftMotor.setup();
     this->m_RightMotor.setup();
     this->m_Pid.SetMode(AUTOMATIC);
+
+    pinMode(this->m_Stby, OUTPUT);
+    digitalWrite(this->m_Stby, HIGH);
 }
 
 void Movement::update(){
     this->m_Sensor.update();
     this->m_Input = this->m_Sensor.getValue(); 
-    this->m_Pid.Compute(); 
+    this->m_Pid.Compute();
 }
 
 void Movement::start(){

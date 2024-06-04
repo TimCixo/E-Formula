@@ -7,9 +7,10 @@
 class Movement{
     private:
     
-    Sensor m_Sensor;
-    Motor m_LeftMotor;
-    Motor m_RightMotor;
+    uint8_t m_Stby;
+    Sensor &m_Sensor;
+    Motor &m_LeftMotor;
+    Motor &m_RightMotor;
     PID m_Pid;
 
     double m_Setpoint = 3500;
@@ -17,7 +18,7 @@ class Movement{
     double m_Output = 0;
 
     public:
-    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, double kp, double ki, double kd);
+    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, uint8_t stby, double kp, double ki, double kd);
     void setup();
     void update();
 

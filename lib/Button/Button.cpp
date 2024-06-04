@@ -11,13 +11,12 @@ void Button::setup(){
 }
 
 void Button::update(){
+    bool previousValue = this->m_CurrenValue;
     this->m_CurrenValue = digitalRead(this->m_Pin);
 
-    if(this->m_PreviousValue < this->m_CurrenValue){
+    if(previousValue < this->m_CurrenValue){
         this->m_Toggled = !this->m_Toggled;
     }
-
-    this->m_PreviousValue = this->m_CurrenValue;
 }
 
 bool Button::getToggled(){
