@@ -3,11 +3,9 @@
 #include "Sensor.h"
 
 Sensor::Sensor(uint8_t pins[8], uint8_t pinLed){
-    for(int i = 0; i < 8; i++){
-        this->m_Pins[i] = pins[i];
-    }
-
     this->m_PinLed = pinLed;
+
+    memcpy(this->m_Pins, pins, sizeof(pins));
 }
 
 void Sensor::setup(){
