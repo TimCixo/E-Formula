@@ -2,12 +2,13 @@
 #include <Arduino.h>
 #include "Sensor.h"
 #include "Motor.h"
+#include "Diode.h"
 
 class Movement{
     private:
     uint8_t m_Stby;
 
-    int16_t m_BaseSpeed = 0;
+    int16_t m_BaseSpeed = 120;
     int16_t m_LastError = 0;
     
     double m_Kp = 0;
@@ -17,9 +18,10 @@ class Movement{
     Sensor &m_Sensor;
     Motor &m_LeftMotor;
     Motor &m_RightMotor;
+    Diode &m_Diode;
 
     public:
-    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, uint8_t stby, double kp, double ki, double kd);
+    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, Diode &diode, uint8_t stby, double kp, double ki, double kd);
     void setup();
     void update();
 
