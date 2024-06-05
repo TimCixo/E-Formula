@@ -10,7 +10,7 @@ Sensor::Sensor(uint8_t pins[8], uint8_t pinLed){
 
 void Sensor::setup(){
     this->m_Qtr.setTypeAnalog();
-    this->m_Qtr.setSensorPins(this->m_Pins, this->mSensorCount);
+    this->m_Qtr.setSensorPins(this->m_Pins, this->m_SensorCount);
     this->m_Qtr.setEmitterPin(this->m_PinLed);
     
     for (uint16_t i = 0; i < 400; i++){
@@ -22,6 +22,6 @@ void Sensor::update(){
     this->m_Value = this->m_Qtr.readLineBlack(this->m_SensorValues);
 }
 
-int Sensor::getValue(){
+int16_t Sensor::getValue(){
     return this->m_Value;
 }
