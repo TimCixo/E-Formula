@@ -22,6 +22,6 @@ void Sensor::update(){
     this->m_Value = this->m_Qtr.readLineBlack(this->m_SensorValues);
 }
 
-int Sensor::getValue(){
+int16_t Sensor::getValue(){
     return this->m_Value;
 }

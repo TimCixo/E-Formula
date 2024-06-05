@@ -14,9 +14,9 @@ class Sensor{
     QTRSensors m_Qtr;
 
     public:
-    Sensor(uint8_t pins[8], uint8_t pinLed);
+    Sensor(uint8_t pins[m_SensorCount], uint8_t pinLed);
     void setup();
     void update();
 
-    int getValue();
+    int16_t getValue();
 };
