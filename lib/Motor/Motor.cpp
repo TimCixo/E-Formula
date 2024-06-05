@@ -11,11 +11,11 @@ void Motor::setup(){
     pinMode(this->m_PinPwm, OUTPUT);
     pinMode(this->m_PinIn1, OUTPUT);
     pinMode(this->m_PinIn2, OUTPUT);
+
+    digitalWrite(m_PinIn1, HIGH);
+    digitalWrite(m_PinIn2, LOW);
 }
 
 void Motor::setSpeed(int speed){
-    digitalWrite(m_PinIn1, HIGH);
-    digitalWrite(m_PinIn2, LOW);
-
     analogWrite(m_PinPwm, speed);
 }

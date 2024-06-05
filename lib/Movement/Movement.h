@@ -7,7 +7,7 @@ class Movement{
     private:
     uint8_t m_Stby;
 
-    int16_t m_BaseSpeed = 0;
+    int16_t m_BaseSpeed = 120;
     int16_t m_LastError = 0;
     
     double m_Kp = 0;
