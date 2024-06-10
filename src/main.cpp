@@ -5,21 +5,25 @@
 #include "Movement.h"
 #include "Diode.h"
 
-double KP = 0.08, KI = 1.3, KD = 0;
+const uint16_t BASE_SPEED = 150;
+const double KP = 0.024, KI = 0.06, KD = 0.14;
 
 Button BUTTON(12);
 Sensor SENSOR((uint8_t[]){A0, A1, A2, A3, A4, A5, A6, A7}, 13);
-Motor LEFT_MOTOR(9, 8, 7);
-Motor RIGHT_MOTOR(3, 5, 4);
-Diode DIODE(2, 10, 11);
+Motor LEFT_MOTOR(9, 7, 8); // Motor's pins are inverted 
+Motor RIGHT_MOTOR(3, 5, 4); // Motors too
+Diode DIODE(10, 11, 2);
 
-Movement MOVEMENT(SENSOR, LEFT_MOTOR, RIGHT_MOTOR, DIODE, 6, KP, KI, KD);
+Movement MOVEMENT(SENSOR, LEFT_MOTOR, RIGHT_MOTOR, DIODE, 6);
 
 void setup(){
     Serial.begin(9600);
 
     BUTTON.setup();
     MOVEMENT.setup();
+
+    MOVEMENT.setBaseSpeed(BASE_SPEED);
+    MOVEMENT.setPidParameters(KP, KI, KD);
 }
 
 void loop(){

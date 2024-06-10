@@ -21,10 +21,12 @@ class Movement{
     Diode &m_Diode;
 
     public:
-    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, Diode &diode, uint8_t stby, double kp, double ki, double kd);
+    Movement(Sensor &sensor, Motor &leftMotor, Motor &rightMotor, Diode &diode, uint8_t stby);
     void setup();
     void update();
 
+    void setPidParameters(double kp, double ki, double kd);
+    void setBaseSpeed(uint16_t baseSpeed);
     void start();
     void stop();
 };
