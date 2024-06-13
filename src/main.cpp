@@ -10,7 +10,7 @@ const double KP = 0.024, KI = 0.06, KD = 0.14;
 
 Button BUTTON(12);
 Sensor SENSOR((uint8_t[]){A0, A1, A2, A3, A4, A5, A6, A7}, 13);
-Motor LEFT_MOTOR(9, 7, 8); // Motor's pins are inverted 
+Motor LEFT_MOTOR(9, 7, 8);
 Motor RIGHT_MOTOR(3, 5, 4); // Motors too
 Diode DIODE(10, 11, 2);
 
